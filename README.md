@@ -2,7 +2,7 @@
 
 Indian Copyright (Diary number) - 34038/2024-CO/SW
 
-![grave2](https://github.com/user-attachments/assets/3f4f67f0-9f4e-4001-bc98-9ae455ceb17e)
+![grave23](https://github.com/user-attachments/assets/8b6dad52-b656-489f-8a2d-b3a3b1316335)
 
 ## Genomic Resistance Annotation and Visualization Environment
 Current Version: 1.0 Tested on: Ubuntu 20.04.6 LTS (Linux 5.15.0-124-generic)
