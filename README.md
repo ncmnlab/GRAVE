@@ -13,7 +13,7 @@ GRAVE developed by three developers equally
 3) Chandrashekar Mootapally
 
 
-1_GRAVE_nASS.py
+### 1_GRAVE_nASS.py
 
 This script is designed for the assembly of multiple paired-end raw reads from sequencing data. For shotgun metagenomics data, it utilizes the metaSPAdes tool (Nurk et al., 2017), while Unicycler (Wick et al., 2017) is employed for whole-genome sequencing (WGS) assemblies. The input is provided through a manifest.csv (Manifest-1) file with three columns: paths for R1 reads, paths for R2 reads, and path of intended output directories. All raw reads are processed and assembled with a standardized command, ensuring consistent output across samples. Also, providing log file with list of assembled samples and its respective folder size as given.
    
@@ -28,7 +28,7 @@ manifest.csv [first column of the file containing path of R1 (Forward reads), se
    
         python3 1_GRAVE_nAss.py --manifest_file MANIFEST_FILE --threads THREADS --type {WGS or metagenome} --log_file LOG_FILE  
             
-2_GRAVE_keeper.py
+### 2_GRAVE_keeper.py
           
 After assembly, user will have to rename all output fasta files according to their sample IDs and consolidate them into a single directory manually. This script then translates nucleotide sequences (.fasta) into amino acid sequences (.faa) using Prodigal (Hyatt et al., 2010). The script accepts a manifest.csv (Manifest-2) file, where the first column specifies input file paths and the second column specifies output paths. It supports both “meta” mode for metagenomic assemblies and “single” mode for WGS assemblies, allowing translation with a single command. Also providing log file contain list of samples processed along with status, size of input fasta file and size of output faa file.
       
@@ -42,7 +42,7 @@ manifest.csv [first column of the file containing name of (Contig) FASTA file, s
 
          python3 2_GRAVE_keeper.py --manifest MANIFEST_FILE --type {WGS or metagenome} --input_dir INPUT_DIR --output_dir OUTPUT_DIR 
 
-3_GRAVE_yard.py
+### 3_GRAVE_yard.py
           
 GRAVE_yard.py processes translated protein sequences for further analysis. It requires a manifest.csv (Manifest-3) file, input and output directories, metadata file (in .csv), and database paths for ARG, class, and mechanism. Using DIAMOND blastP (Buchfink et al., 2015), it searches against modified CARD 3.3.0 database(s) with a 60% identity threshold and an e-value cutoff of 0.00001. The resulting BLAST outputs of ARG, Class, and Mechanism are quantified as abundance hits for individual ARGs, class, and mechanism, producing SampleID_abund.csv files for each of the samples, which are further compiled into a combined_arg/class/mech.tsv file. This consolidated file is used for constructing heatmaps of top 50 ARGs with high abundance, class and dominant mechanisms and their respective tables in .csv file. Correlation coefficient matrix plot of ARGs and class using Karl pearson’s method will be generated along with the raw table of r value (correlation coefficient) for ARGs and Class; Alpha diversity will be computed as Shannon index for ARG and Class, PCoA (PERMANOVA) for the predicted ARGs and Class and a heatmap of core ARGs and Class will also be generated for visualization.
       
@@ -60,7 +60,7 @@ Inputs required
      
         python3 3_GRAVE_yard.py --manifest_file MANIFEST_FILE --input_dir INPUT_DIR --input_dir --output_dir OUTPUT_ARG_DIR --class_output_dir CLASS_OUTPUT_DIR --mech_output_dir MECH_OUTPUT_DIR --metadata_file METADATA_FILE --gene_db GENE_DB --class_db CLASS_DB --mech_db MECH_DB --threads THREADS
 
-4_GRAVE_filler.py
+### 4_GRAVE_filler.py
           
 This script is written to process BLAST output files containing either class or mechanism data. In some instances, certain ARG classes and mechanisms are categorized in the database as exhibiting more than two antibiotic class name in one class (for classes) or employing multiple mechanisms strategies (for mechanisms). This categorization results in longer names that may be challenging to accommodate within the generated visualizations. To address this issue, the GRAVE_filler tool can be employed. This tool takes the blast.csv file as input and standardizes class or mechanism names that contain semicolons (";") by converting them into a specified type, such as "Multiclass_resistance" or "multi_mode". Subsequently, users can utilize the GRAVE_yard tool, specifying the output directory from GRAVE_filler as the input for mechanism processing. By using the --skip_abundance command argument, users can re-generate all visualizations with the updated files.
 
@@ -70,7 +70,7 @@ manifest.csv [first column containing names of blast output file (SampleID_Blast
      
         python3 4_GRAVE_filler.py --manifest_file MANIFEST_FILE --replace_option {multiclass_resistant or multimode} --input_dir INPUT_DIR --output_dir OUTPUT_DIR
 
-5_GRAVE_digger.py
+### 5_GRAVE_digger.py
           
 This script constructs stacked bar plots to represent the composition of ARG classes and resistance mechanisms within sample groups. It uses metadata to group the samples, normalizes mean abundance values, converts them into percentages, and generates visual representations of the ARG distributions.
 
@@ -81,7 +81,7 @@ Inputs file required
      
         python3 5_GRAVE_digger.py --metadata_file METADATA_FILE --type {Class or Mechanism} --compiled_abundance_file COMPILED_ABUNDANCE_FILE --output_dir OUTPUT_DIR --colour COLOUR[optional]
 
-6_GRAVE_web.py
+### 6_GRAVE_web.py
           
 GRAVE_web.py uses the given combined_abundance.tsv file of either class or mechanism to generate spider web plots, visualizing the abundance of each class or mechanism of ARG across samples. It converts abundance values into percentages, creating a graphical display that highlights the trend in resistance mechanisms between samples.
 
@@ -92,7 +92,7 @@ Inputs file required
         python3 6_GRAVE_web.py --compiled_abundance_file COMPILED_ABUNDANCE_FILE --output_dir OUTPUT_DIR
 
 
-References
+#### References
 
 For Unicycler (WGS) - 
 
