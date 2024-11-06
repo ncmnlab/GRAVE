@@ -56,7 +56,7 @@ Inputs required
 2) metadata.csv [first column containing SampleID, and other columns with respective metadata of each sample, header required]
 3) gene_db (CARD_arg_102024.dmnd), 
    class_db (CARD_class_102024.dmnd), 
-   mech_db (CARD_mech_102024.dmnd), all three databases are trained database to be used as input in this script
+   mech_db (CARD_mech_102024.dmnd), all three databases are trained database to be used as input in this script,  ##### Use database given in folder name Databases in GRAVE repository.
      
         python3 3_GRAVE_yard.py --manifest_file MANIFEST_FILE --input_dir INPUT_DIR --input_dir --output_dir OUTPUT_ARG_DIR --class_output_dir CLASS_OUTPUT_DIR --mech_output_dir MECH_OUTPUT_DIR --metadata_file METADATA_FILE --gene_db GENE_DB --class_db CLASS_DB --mech_db MECH_DB --threads THREADS
 
