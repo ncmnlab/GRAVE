@@ -27,7 +27,7 @@ This script is designed for the assembly of multiple paired-end raw reads from s
 
    Inputs required
 
-manifest.csv [first column of the file containing path of R1 (Forward reads), second column containing path of R2 (Reverse reads), third column containing intended output path]
+manifest.csv [first column of the file containing path of R1 (Forward reads), second column containing path of R2 (Reverse reads), third column containing intended output path] Example_file (https://github.com/ncmnlab/GRAVE/blob/main/example_data/manifest_1.csv)
    
         python3 1_GRAVE_nAss.py --manifest_file MANIFEST_FILE --threads THREADS --type {WGS or metagenome} --log_file LOG_FILE  
             
@@ -41,7 +41,7 @@ Dependencies required
 
 Inputs required 
         
-manifest.csv [first column of the file containing name of (Contig) FASTA file, second column containing name of required FAA file (Predicted protein assembly), no header required]
+manifest.csv [first column of the file containing name of (Contig) FASTA file, second column containing name of required FAA file (Predicted protein assembly), no header required] Example_file (https://github.com/ncmnlab/GRAVE/blob/main/example_data/manifest_2.csv) 
 
          python3 2_GRAVE_keeper.py --manifest MANIFEST_FILE --type {WGS or metagenome} --input_dir INPUT_DIR --output_dir OUTPUT_DIR 
 
@@ -55,8 +55,8 @@ Dependencies required
 
 Inputs required 
 
-1) manifest.csv [first column of the file containing name of (Predicted protein assembly)   FAA file, second column contain name of output file (SampleID_Blast.csv), no header required]
-2) metadata.csv [first column containing SampleID, and other columns with respective metadata of each sample, header required]
+1) manifest.csv [first column of the file containing name of (Predicted protein assembly)   FAA file, second column contain name of output file (SampleID_Blast.csv), no header required] Example_file (https://github.com/ncmnlab/GRAVE/blob/main/example_data/manifest_3.csv)
+2) metadata.csv [first column containing SampleID, and other columns with respective metadata of each sample, header required] Example_file (https://github.com/ncmnlab/GRAVE/blob/main/example_data/metadata.csv)
 3) gene_db (CARD_arg_102024.dmnd), 
    class_db (CARD_class_102024.dmnd), 
    mech_db (CARD_mech_102024.dmnd), all three databases are trained database to be used as input in this script (Accessible for download: https://github.com/ncmnlab/GRAVE/tree/main/databases).
@@ -69,7 +69,7 @@ This script is written to process BLAST output files containing either class or 
 
 Inputs file required
 
-manifest.csv [first column containing names of blast output file (SampleID_Blast.csv) file, second column containing same file names as mentioned in column one, no header required]
+manifest.csv [first column containing names of blast output file (SampleID_Blast.csv) file, second column containing same file names as mentioned in column one, no header required] Example_file (https://github.com/ncmnlab/GRAVE/blob/main/example_data/manifest_4.csv) 
      
         python3 4_GRAVE_filler.py --manifest_file MANIFEST_FILE --replace_option {multiclass_resistant or multimode} --input_dir INPUT_DIR --output_dir OUTPUT_DIR
 
@@ -79,7 +79,7 @@ This script constructs stacked bar plots to represent the composition of ARG cla
 
 Inputs file required 
 
-1) metadata.csv [first column containing SampleID, and other columns with respective metadata of each sample, header required]
+1) metadata.csv [first column containing SampleID, and other columns with respective metadata of each sample, header required] Example_file (https://github.com/ncmnlab/GRAVE/blob/main/example_data/metadata.csv)
 2) combined_abundance.tsv (output of class and mechanisms of GRAVE_yard)
      
         python3 5_GRAVE_digger.py --metadata_file METADATA_FILE --type {Class or Mechanism} --compiled_abundance_file COMPILED_ABUNDANCE_FILE --output_dir OUTPUT_DIR --colour COLOUR[optional]
