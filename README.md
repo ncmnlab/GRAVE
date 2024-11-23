@@ -14,7 +14,7 @@ GRAVE developed by three developers equally
 2) Neelam Nathani
 3) Chandrashekar Mootapally
 
-![Untitled-1-01](https://github.com/user-attachments/assets/bcea7b91-7765-4d9a-8117-2363ad3388f5)
+![Untitled-1-05](https://github.com/user-attachments/assets/02fa7ea1-046f-41e3-bb74-a9c213fac736)
 
 ### 1_GRAVE_nASS.py
 
